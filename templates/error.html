@@ -1,9 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head><title>Error</title></head>
+<head>
+  <title>Login Failed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .error-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255,0,0,0.2);
+      text-align: center;
+      border: 1px solid red;
+    }
+
+    h3 {
+      color: red;
+    }
+
+    a {
+      text-decoration: none;
+      margin-top: 15px;
+      display: inline-block;
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
 <body>
-  <h3 style="color:red">{{ message }}</h3>
-  <a href="/">Go Back to Login</a>
+  <div class="error-box">
+    <h3>{{ message }}</h3>
+    <a href="/">Try Again</a>
+  </div>
 </body>
 </html>
 

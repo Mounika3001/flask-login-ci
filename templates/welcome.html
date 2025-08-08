@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head><title>Welcome</title></head>
+<head>
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f0ff;
+      display: flex;
+      justify-content: center;
+
+      align-items: center;
+      height: 100vh;
+    }
+
+    .welcome-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #007BFF;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: white;
+      background-color: #dc3545;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    a:hover {
+      background-color: #a71d2a;
+    }
+  </style>
+</head>
 <body>
-  <h2>Welcome, {{ username }}!</h2>
-  <p>You have successfully logged in.</p>
-  <a href="/logout">Logout</a>
+  <div class="welcome-box">
+    <h2>Welcome, {{ username }}!</h2>
+    <p>You have successfully logged in.</p>
+    <a href="/logout">Logout</a>
+  </div>
 </body>
 </html>
+
