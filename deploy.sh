@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e  # Exit immediately if any command fails
 
 APP_NAME="loginapp"
 DOCKER_USER="qou3kor"
@@ -11,9 +11,9 @@ if [ -z "$1" ]; then
 fi
 
 VERSION=$1
-echo "Deploying version: $VERSION"
+echo "🚀 Deploying version: $VERSION"
 
-echo "=== Pulling latest code ==="
+echo "=== Pulling latest code from GitHub ==="
 git pull origin main
 
 echo "=== Building Docker image ==="
@@ -25,14 +25,15 @@ docker tag $APP_NAME $DOCKER_USER/$APP_NAME:$VERSION
 echo "=== Logging into Docker Hub ==="
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-echo "=== Pushing Docker image ==="
+echo "=== Pushing Docker image to Docker Hub ==="
 docker push $DOCKER_USER/$APP_NAME:$VERSION
 
-echo "=== Stopping old container if running ==="
+echo "=== Stopping old container if it exists ==="
 docker stop flask_container || true
 docker rm flask_container || true
 
-echo "=== Running new container ==="
+echo "=== Running new container on port 5002 ==="
 docker run -d --restart unless-stopped -p 5002:5000 --name flask_container $DOCKER_USER/$APP_NAME:$VERSION
 
-echo "✅ Deployment complete with version $VERSION"
+echo "✅ Deployment complete — loginapp is running on http://localhost:5002"
+
