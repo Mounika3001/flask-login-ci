@@ -33,3 +33,4 @@ echo "=== Running new container on port 5002 ==="
 docker run -d --restart unless-stopped -p 5002:5000 --name flask_container $DOCKER_USER/$APP_NAME:$VERSION
 
 echo "✅ Deployment complete — $DOCKER_USER/$APP_NAME:$VERSION is running on http://localhost:5002"
+
